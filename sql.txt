@@ -1,0 +1,363 @@
+mysql> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create database sampleDB;
+Query OK, 1 row affected (0.09 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sampleDB           |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use sampleDB;
+Database changed
+mysql> create table CUSTOMERS(personID int,lastname varchar(255),firstname varchar(255),address varchar(355),city varchar(455));
+Query OK, 0 rows affected (0.53 sec)
+
+mysql> INSERT INTO CUSTOMERS(person,lastname,firstname,address,city)
+    -> VALUES (person1,vinayak,siddhi,gantyada,vizianagarma)
+    -> ;
+ERROR 1054 (42S22): Unknown column 'person' in 'field list'
+mysql> INSERT INTO CUSTOMERS(person,lastname,firstname,address,city)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> INSERT INTO CUSTOMERS(person,lastname,firstname,address,city);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> INSERT INTO CUSTOMERS(person,lastname,firstname,address,city)
+    -> INSERT INTO CUSTOMERS(person,lastname,firstname,address,city)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO CUSTOMERS(person,lastname,firstname,address,city)' at line 2
+mysql> INSERT INTO CUSTOMERS(person,lastname,firstname,address,city)VALUES (person1,vinayak,siddhi,gantyada,vizianagarma);
+ERROR 1054 (42S22): Unknown column 'person' in 'field list'
+mysql> INSERT INTO CUSTOMERS(personID,lastname,firstname,address,city)
+    -> VALUES (person1,vinayak,siddhi,gantyada,vizianagarma);
+ERROR 1054 (42S22): Unknown column 'person1' in 'field list'
+mysql> INSERT INTO CUSTOMERS(personID,lastname,firstname,address,city) VALUES (person1,vinayak,siddhi,gantyada,vizianagarma);
+ERROR 1054 (42S22): Unknown column 'person1' in 'field list'
+mysql> DROP DATABASE CUSTOMERS
+    -> DROP DATABASE CUSTOMERS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DROP DATABASE CUSTOMERS' at line 2
+mysql> DROP DATABASE CUSTOMERS;
+ERROR 1008 (HY000): Can't drop database 'CUSTOMERS'; database doesn't exist
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sampleDB           |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> DROP DATABASE sampleDB;
+Query OK, 1 row affected (0.29 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create database siddhu;
+Query OK, 1 row affected (0.12 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| siddhu             |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use siddhu;
+Database changed
+mysql> create table students(personid int,name varchar(255));
+Query OK, 0 rows affected (1.12 sec)
+
+mysql> INSERT INTO students(personid,name)
+    -> VALUES (
+    -> '200551','siddhu');
+Query OK, 1 row affected (0.47 sec)
+
+mysql> SELECT FROM*students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM*students' at line 1
+mysql> SELECT * FROM students;
++----------+--------+
+| personid | name   |
++----------+--------+
+|   200551 | siddhu |
++----------+--------+
+1 row in set (0.01 sec)
+
+mysql> INSERT INTO students(personid,name) VALUES('200552',
+    -> 'nadeesh'),('200553','narasimha swami'),('200554','marrapu mani');
+Query OK, 3 rows affected (0.20 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *FROM sudents;
+ERROR 1146 (42S02): Table 'siddhu.sudents' doesn't exist
+mysql> SELECT *FROM students;
++----------+-----------------+
+| personid | name            |
++----------+-----------------+
+|   200551 | siddhu          |
+|   200552 | nadeesh         |
+|   200553 | narasimha swami |
+|   200554 | marrapu mani    |
++----------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO students(personid,name,address) VALUES('200551','siddhu','gantyada');
+ERROR 1054 (42S22): Unknown column 'address' in 'field list'
+mysql> ALTER TABLE students
+    -> ADD COLUMN address;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> ALTER TABLE students
+    -> ADD COLUMN address varchar(255);
+Query OK, 0 rows affected (0.73 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| siddhu             |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select *form students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form students' at line 1
+mysql> SELECT * FORM students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FORM students' at line 1
+mysql> use siddhu;
+Database changed
+mysql> SELECT * FORM students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FORM students' at line 1
+mysql> SELECT * FR0M students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FR0M students' at line 1
+mysql> use siddhu;
+Database changed
+mysql> select * from students;
++----------+-----------------+---------+
+| personid | name            | address |
++----------+-----------------+---------+
+|   200551 | siddhu          | NULL    |
+|   200552 | nadeesh         | NULL    |
+|   200553 | narasimha swami | NULL    |
+|   200554 | marrapu mani    | NULL    |
++----------+-----------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> update students
+    -> set address='gantyada'
+    -> where personid=200551;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from students;
++----------+-----------------+----------+
+| personid | name            | address  |
++----------+-----------------+----------+
+|   200551 | siddhu          | gantyada |
+|   200552 | nadeesh         | NULL     |
+|   200553 | narasimha swami | NULL     |
+|   200554 | marrapu mani    | NULL     |
++----------+-----------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> update students
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> update students
+    -> set address='prakasam'
+    -> where personid=200552;
+Query OK, 1 row affected (0.44 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students
+    -> set address='kadapa'
+    -> where personid=200553;
+Query OK, 1 row affected (0.44 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students
+    -> set address='kadapa'
+    -> where personid=200554;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from students;
++----------+-----------------+----------+
+| personid | name            | address  |
++----------+-----------------+----------+
+|   200551 | siddhu          | gantyada |
+|   200552 | nadeesh         | prakasam |
+|   200553 | narasimha swami | kadapa   |
+|   200554 | marrapu mani    | kadapa   |
++----------+-----------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> alter table students;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> alter table students
+    -> add column class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> alter table students
+    -> add column class varchar(9);
+Query OK, 0 rows affected (0.24 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update students
+    -> set class='cse-2c'
+    -> where personid=200551;
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from students;
++----------+-----------------+----------+--------+
+| personid | name            | address  | class  |
++----------+-----------------+----------+--------+
+|   200551 | siddhu          | gantyada | cse-2c |
+|   200552 | nadeesh         | prakasam | NULL   |
+|   200553 | narasimha swami | kadapa   | NULL   |
+|   200554 | marrapu mani    | kadapa   | NULL   |
++----------+-----------------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> update students
+    -> set class='cse-2c','cse-2e','cse-2f'
+    -> where personid=200552,200553,200554;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''cse-2e','cse-2f'
+where personid=200552,200553,200554' at line 2
+mysql> update students
+    -> set class='cse-2c',class='cse-3w'
+    -> where personid=200552,personid=200553;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',personid=200553' at line 3
+mysql> ^C
+mysql> update students
+    -> set class=
+    -> case when personid=200552 then 'cse-2e'
+    -> when personid=200553 then 'cse-2f'
+    -> when personid=200554 then 'cse-2r'
+    -> end
+    -> where personid in (200552,200553,200554);
+Query OK, 3 rows affected (0.09 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select *from students;
++----------+-----------------+----------+--------+
+| personid | name            | address  | class  |
++----------+-----------------+----------+--------+
+|   200551 | siddhu          | gantyada | cse-2c |
+|   200552 | nadeesh         | prakasam | cse-2e |
+|   200553 | narasimha swami | kadapa   | cse-2f |
+|   200554 | marrapu mani    | kadapa   | cse-2r |
++----------+-----------------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> tee /home/siddu/sql.txt
+mysql> exit
+mysql> select*from students where address='kadapa';
++----------+-----------------+---------+--------+
+| personid | name            | address | class  |
++----------+-----------------+---------+--------+
+|   200553 | narasimha swami | kadapa  | cse-2f |
+|   200554 | marrapu mani    | kadapa  | cse-2r |
++----------+-----------------+---------+--------+
+2 rows in set (0.01 sec)
+
+mysql> delete from students where address='kadapa' or name='narasimha swami';
+Query OK, 2 rows affected (0.45 sec)
+
+mysql> select *from students;
++----------+------------+----------+--------+
+| personid | name       | address  | class  |
++----------+------------+----------+--------+
+|   200551 | siddhu     | gantyada | cse-2c |
+|   200552 | nadeesh    | prakasam | cse-2e |
+|   200555 | jaru mitai | godavari | cse-ff |
++----------+------------+----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> insert into students(personid,name,address,class)
+    -> values('200555','jaru mitai-1','godavari','cse-ff'),('200555','jaru mitai-2','godavari','cse-ff'),('200555','jaru mitai-3','godavari','cse-ff');
+Query OK, 3 rows affected (0.49 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into students(personid,name,address,class) values('200555','jaru mitai-1','godavari','cse-ff'),('200555','jaru mitai-2','godavari','cse-ff'),('200555','jaru mitai-3','godavari','cse-ff');
+Query OK, 3 rows affected (0.07 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select*from students;
++----------+--------------+----------+--------+
+| personid | name         | address  | class  |
++----------+--------------+----------+--------+
+|   200551 | siddhu       | gantyada | cse-2c |
+|   200552 | nadeesh      | prakasam | cse-2e |
+|   200555 | jaru mitai   | godavari | cse-ff |
+|   200555 | jaru mitai-1 | godavari | cse-ff |
+|   200555 | jaru mitai-2 | godavari | cse-ff |
+|   200555 | jaru mitai-3 | godavari | cse-ff |
+|   200555 | jaru mitai-1 | godavari | cse-ff |
+|   200555 | jaru mitai-2 | godavari | cse-ff |
+|   200555 | jaru mitai-3 | godavari | cse-ff |
++----------+--------------+----------+--------+
+9 rows in set (0.00 sec)
+
+mysql> insert into students values('200557','hello world','kakinada','cse-gf');
+Query OK, 1 row affected (0.47 sec)
+
+mysql> select*from students;
++----------+--------------+----------+--------+
+| personid | name         | address  | class  |
++----------+--------------+----------+--------+
+|   200551 | siddhu       | gantyada | cse-2c |
+|   200552 | nadeesh      | prakasam | cse-2e |
+|   200555 | jaru mitai   | godavari | cse-ff |
+|   200555 | jaru mitai-1 | godavari | cse-ff |
+|   200555 | jaru mitai-2 | godavari | cse-ff |
+|   200555 | jaru mitai-3 | godavari | cse-ff |
+|   200555 | jaru mitai-1 | godavari | cse-ff |
+|   200555 | jaru mitai-2 | godavari | cse-ff |
+|   200555 | jaru mitai-3 | godavari | cse-ff |
+|   200557 | hello world  | kakinada | cse-gf |
++----------+--------------+----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> 
+mysql> 
