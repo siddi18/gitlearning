@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard</title>
+    <link rel="stylesheet" href="clipboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="text-box">
+            <div id="title">Web development</div>
+            <textarea id="text">Lorem, ipsum dolor sit amet consectetur adipisicing 
+                elit.odio consequatur mollitia magnam distinctio cumque similiqu
+                e porro magni, doloribus, molestias libero ipsum laborum?
+            </textarea>
+            <button id="copy">Copy Text</button>
+        </div>
+    </div>
+
+    <script>
+        let copyTextEle=document.querySelector(".text-box")
+        let textEle=document.getElementById('text')
+        let copyEle=document.getElementById('copy')
+        copyEle.onclick=function(){
+            textEle.select()
+            document.execCommand('copy')
+            window.getSelection().removeAllRanges()
+            copyTextEle.classList.add('active')
+            setTimeout(()=>{
+                copyTextEle.classList.remove("active")
+            },1000)
+        }
+    </script>
+
+
+</body>
+</html>

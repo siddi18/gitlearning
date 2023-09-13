@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: blueviolet;
+}
+.container{
+    background-color: white;
+    padding: 20px;
+    width: 40%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.div1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    /* If you want some gap between the input boxes */
+    gap: 10px;
+}
+#buttons{
+    background-color: blue;
+    color: white;
+    padding: 3px 20px;
+    margin-left: 15px;
+    border-radius: 5px;
+}
+#inputtext{
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+#inputtext:focus{
+   outline: none;
+   border-color: blueviolet;
+}
+#tasklist{
+    margin-bottom: 9px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c5e1e6;
+    height: 45px;
+    margin-bottom: 9px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #939697;
+}
+.del{
+    color: #d11a2a;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+span{
+    word-wrap: break-word;
+    width: 90%;
+}

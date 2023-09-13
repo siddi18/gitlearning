@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Demo</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .button{
+            background-color: purple;
+            border: 2px solid purple;
+            color: white;
+            padding: 10px;
+            width: 200px;
+            border-radius: 40px;
+            font-size: 16px;
+            margin-bottom: 50px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="country"><br><br>
+    <input type="submit" class="button" id="special" value="Get Data">
+    <div id="data"></div>
+    
+
+
+    <script>
+        let btn=document.getElementById("special")
+        let data=document.getElementById("data")
+        
+        btn.addEventListener('click',loadData)
+
+        function loadData(){
+            let cname=document.getElementById("country").value
+            if(cname){
+                let url=`https://restcountries.com/v3.1/name/${cname}`
+
+
+        let xhr=new XMLHttpRequest()
+
+        xhr.open('GET',url,true)
+        xhr.send()
+
+        xhr.onload=function(){
+
+        if(xhr.status==200){
+        let result=xhr.responseText
+        result=JSON.parse(result)
+        let [countr]=result;
+        console.log(countr)
+        data.innerHTML=`<img src=${countr.flags.png}>`
+        }
+        else
+        data.innerHTML="invalid request"
+    }
+}
+}
+
+   
+
+
+        // function loadData(){
+
+        //     xhr=new XMLHttpRequest()
+
+        //     xhr.open('GET','country.json',true)
+        //     xhr.send()
+
+        //     xhr.onload=function(){
+
+        //         if(xhr.status==200){
+        //         let result=xhr.responseText
+        //         result=JSON.parse(result)
+        //         console.log(result)
+
+
+        //         let str=`<table border='3'><tr>`
+        //             for(key in result){
+        //                 str=str+`<th>${key}</th>`
+        //             }
+        //             str=str+`</tr><tr>`
+        //             for(key in result){
+        //                 str=str+`<td>${result[key]}</td>`
+        //             }
+        //             str=str+`</tr></table>`
+
+        //             data.innerHTML=str;
+        //     }
+        //     else
+        //     data.innerHTML="No File Found";
+        // }
+        // }
+    </script>
+
+</body>
+</html>
